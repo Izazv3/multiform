@@ -21,7 +21,7 @@ class _UserFormState extends State<UserForm> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(16),
+      padding: EdgeInsets.all(2),
       child: Material(
         elevation: 1,
         clipBehavior: Clip.antiAlias,
@@ -31,49 +31,61 @@ class _UserFormState extends State<UserForm> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              AppBar(
-                leading: Icon(Icons.verified_user),
-                elevation: 0,
-                title: Text('User Details'),
-                backgroundColor: Theme.of(context).accentColor,
-                centerTitle: true,
-                actions: <Widget>[
-                  IconButton(
-                    icon: Icon(Icons.delete),
-                    onPressed: widget.onDelete,
-                  )
-                ],
-              ),
-              Padding(
-                padding: EdgeInsets.only(left: 16, right: 16, top: 16),
-                child: TextFormField(
-                  initialValue: widget.user.fullName,
-                  onSaved: (val) => widget.user.fullName = val,
-                  validator: (val) =>
-                      val.length > 3 ? null : 'Full name is invalid',
-                  decoration: InputDecoration(
-                    labelText: 'Full Name',
-                    hintText: 'Enter your full name',
-                    icon: Icon(Icons.person),
-                    isDense: true,
-                  ),
+              Flexible(
+                child: Row(
+                  children: [
+                    Flexible(
+                      flex: 7,
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          left: 16,
+                          right: 16,
+                        ),
+                        child: TextFormField(
+                          initialValue: widget.user.fullName,
+                          onSaved: (val) => widget.user.fullName = val,
+                          validator: (val) =>
+                              val.length > 3 ? null : 'enter expense category',
+                          decoration: InputDecoration(
+                            labelText: 'Category',
+                            hintText: 'Expence category',
+                            icon: Icon(Icons.category),
+                            isDense: true,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      flex: 7,
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          left: 16,
+                          right: 16,
+                        ),
+                        child: TextFormField(
+                          initialValue: widget.user.email,
+                          onSaved: (val) => widget.user.email = val,
+                          validator: (val) =>
+                              val.length > 3 ? null : 'enter expence',
+                          decoration: InputDecoration(
+                            labelText: 'Expence',
+                            hintText: 'Expence (monthly)',
+                            icon: Icon(Icons.currency_rupee_outlined),
+                            isDense: true,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      flex: 1,
+                      child: IconButton(
+                        icon: Icon(Icons.delete),
+                        onPressed: widget.onDelete,
+                      ),
+                    )
+                  ],
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(left: 16, right: 16, bottom: 24),
-                child: TextFormField(
-                  initialValue: widget.user.email,
-                  onSaved: (val) => widget.user.email = val,
-                  validator: (val) =>
-                      val.contains('@') ? null : 'Email is invalid',
-                  decoration: InputDecoration(
-                    labelText: 'Email Address',
-                    hintText: 'Enter your email',
-                    icon: Icon(Icons.email),
-                    isDense: true,
-                  ),
-                ),
-              )
             ],
           ),
         ),

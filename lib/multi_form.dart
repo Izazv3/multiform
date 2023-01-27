@@ -16,14 +16,14 @@ class _MultiFormState extends State<MultiForm> {
     return Scaffold(
       appBar: AppBar(
         elevation: .0,
-        leading: Icon(
-          Icons.wb_cloudy,
-        ),
-        title: Text('REGISTER USERS'),
+        // leading: Icon(
+        //   Icons.wb_cloudy,
+        // ),
+        title: Text('Finanace'),
         actions: <Widget>[
-          FlatButton(
+          ElevatedButton(
             child: Text('Save'),
-            textColor: Colors.white,
+            // textColor: Colors.white,
             onPressed: onSave,
           )
         ],
@@ -94,20 +94,20 @@ class _MultiFormState extends State<MultiForm> {
           MaterialPageRoute(
             fullscreenDialog: true,
             builder: (_) => Scaffold(
-                  appBar: AppBar(
-                    title: Text('List of Users'),
+              appBar: AppBar(
+                title: Text('List of Users'),
+              ),
+              body: ListView.builder(
+                itemCount: data.length,
+                itemBuilder: (_, i) => ListTile(
+                  leading: CircleAvatar(
+                    child: Text(data[i].fullName.substring(0, 1)),
                   ),
-                  body: ListView.builder(
-                    itemCount: data.length,
-                    itemBuilder: (_, i) => ListTile(
-                          leading: CircleAvatar(
-                            child: Text(data[i].fullName.substring(0, 1)),
-                          ),
-                          title: Text(data[i].fullName),
-                          subtitle: Text(data[i].email),
-                        ),
-                  ),
+                  title: Text(data[i].fullName),
+                  subtitle: Text(data[i].email),
                 ),
+              ),
+            ),
           ),
         );
       }
