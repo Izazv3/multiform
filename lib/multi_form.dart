@@ -65,7 +65,6 @@ class _MultiFormState extends State<MultiForm> {
     setState(() {
       var find = users.firstWhere(
         (it) => it.user == _user,
-        orElse: () => null,
       );
       if (find != null) users.removeAt(users.indexOf(find));
     });
@@ -101,10 +100,10 @@ class _MultiFormState extends State<MultiForm> {
                 itemCount: data.length,
                 itemBuilder: (_, i) => ListTile(
                   leading: CircleAvatar(
-                    child: Text(data[i].fullName.substring(0, 1)),
+                    child: Text(data[i]!.fullName.substring(0, 1)),
                   ),
-                  title: Text(data[i].fullName),
-                  subtitle: Text(data[i].email),
+                  title: Text(data[i]!.fullName),
+                  subtitle: Text(data[i]!.email),
                 ),
               ),
             ),

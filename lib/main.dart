@@ -10,8 +10,6 @@ class MyApp extends StatelessWidget {
       title: 'Multi Form',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        accentColor: Color(0xFF1DCC8C),
-        platform: TargetPlatform.iOS,
       ),
       debugShowCheckedModeBanner: false,
       home: MultiForm(),

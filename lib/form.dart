@@ -4,11 +4,11 @@ import 'package:flutter_multipage_form/user.dart';
 typedef OnDelete();
 
 class UserForm extends StatefulWidget {
-  final User user;
+  final User? user;
   final state = _UserFormState();
-  final OnDelete onDelete;
+  final OnDelete? onDelete;
 
-  UserForm({Key key, this.user, this.onDelete}) : super(key: key);
+  UserForm({Key? key, this.user, this.onDelete}) : super(key: key);
   @override
   _UserFormState createState() => state;
 
@@ -42,10 +42,10 @@ class _UserFormState extends State<UserForm> {
                           right: 16,
                         ),
                         child: TextFormField(
-                          initialValue: widget.user.fullName,
-                          onSaved: (val) => widget.user.fullName = val,
+                          initialValue: widget.user!.fullName,
+                          onSaved: (val) => widget.user!.fullName = val!,
                           validator: (val) =>
-                              val.length > 3 ? null : 'enter expense category',
+                              val!.length > 3 ? null : 'enter expense category',
                           decoration: InputDecoration(
                             labelText: 'Category',
                             hintText: 'Expence category',
@@ -63,10 +63,10 @@ class _UserFormState extends State<UserForm> {
                           right: 16,
                         ),
                         child: TextFormField(
-                          initialValue: widget.user.email,
-                          onSaved: (val) => widget.user.email = val,
+                          initialValue: widget.user!.email,
+                          onSaved: (val) => widget.user!.email = val!,
                           validator: (val) =>
-                              val.length > 3 ? null : 'enter expence',
+                              val!.length > 3 ? null : 'enter expence',
                           decoration: InputDecoration(
                             labelText: 'Expence',
                             hintText: 'Expence (monthly)',
@@ -95,8 +95,8 @@ class _UserFormState extends State<UserForm> {
 
   ///form validator
   bool validate() {
-    var valid = form.currentState.validate();
-    if (valid) form.currentState.save();
+    var valid = form.currentState!.validate();
+    if (valid) form.currentState!.save();
     return valid;
   }
 }
